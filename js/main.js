@@ -25,7 +25,8 @@ console.log(mine);
 var listaNumeriGiocatore = [];
 var numeriConsentiti = 0;
 
-for (var i = 0; i < 100 - 16; i++) {
+// PS.Ho messo i < 5 per non inserire i numero 86 volte :)
+for (var i = 0; i < 5; i++) {
   var numeroGiocatore = parseInt(
     prompt("Inserisci un numero compreso tra 1 e 100")
   );
@@ -35,6 +36,9 @@ for (var i = 0; i < 100 - 16; i++) {
     break;
   } else if (numeroGiocatore < 1 || numeroGiocatore > 100) {
     console.log("Hai inserito un numero vietato e hai perso!");
+    break;
+  } else if (isNaN(numeroGiocatore)) {
+    console.log("Non hai inserito un numero e hai perso!");
     break;
   } else if (listaNumeriGiocatore.indexOf(numeroGiocatore) == -1) {
     listaNumeriGiocatore.push(numeroGiocatore);
