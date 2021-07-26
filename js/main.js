@@ -6,12 +6,41 @@
 // La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
 
+// BONUS: (da fare solo se funziona tutto il resto)
+// all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
+// con difficoltà 0 => tra 1 e 100
+// con difficoltà 1 => tra 1 e 80
+// con difficoltà 2 => tra 1 e 50
+
 // Inseriamo le mine all'interno dell'array
 var mine = [];
+var randomNumber = 0;
+var difficulty = 0;
+var max = 100;
+
+do {
+  difficulty = parseInt(
+    prompt("Inserisci la difficoltà:\n0 = Facile, 1 = Medio, 2 = Difficile")
+  );
+} while (isNaN(difficulty) == true || difficulty < 0 || difficulty > 2);
+
+switch (difficulty) {
+  case 0:
+    max = 100;
+    console.log("Hai selezionato la difficoltà: Facile");
+    break;
+  case 1:
+    max = 80;
+    console.log("Hai selezionato la difficoltà: Media");
+    break;
+  case 2:
+    max = 50;
+    console.log("Hai selezionato la difficoltà: Difficile");
+    break;
+}
 
 for (var i = 0; i < 16; i++) {
-  //   mine.push(generaNumero(1, 100));
-  var randomNumber = generaNumero(1, 100);
+  randomNumber = generaNumero(1, max);
   if (mine.indexOf(randomNumber) == -1) {
     mine.push(randomNumber);
   } else {
