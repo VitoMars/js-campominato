@@ -25,8 +25,7 @@ console.log(mine);
 var listaNumeriGiocatore = [];
 var numeriConsentiti = 0;
 
-// PS.Ho messo i < 5 in modo da non ripetersi 86 volte, ma solo 5 volte :)
-for (var i = 0; i < 5; i++) {
+for (var i = 0; i < 100 - 16; i++) {
   var numeroGiocatore = parseInt(
     prompt("Inserisci un numero compreso tra 1 e 100")
   );
@@ -35,15 +34,15 @@ for (var i = 0; i < 5; i++) {
     console.log("Sei scoppiato!");
     break;
   } else if (numeroGiocatore < 1 || numeroGiocatore > 100) {
-    console.log("Hai inserito un numero vietato");
+    console.log("Hai inserito un numero vietato e hai perso!");
+    break;
   } else if (listaNumeriGiocatore.indexOf(numeroGiocatore) == -1) {
     listaNumeriGiocatore.push(numeroGiocatore);
     console.log("Hai inserito: " + numeroGiocatore);
-    console.log("Bravo! Non sei ancora scoppiato");
+    console.log("Bravo! Non sei ancora scoppiato.");
     numeriConsentiti++;
   }
 }
-console.log(listaNumeriGiocatore);
 console.log("Hai fatto un punteggio di " + numeriConsentiti);
 
 //Funzioni
