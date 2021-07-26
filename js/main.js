@@ -23,23 +23,28 @@ console.log(mine);
 
 // Inserimento dei numeri del giocatore nell'array
 var listaNumeriGiocatore = [];
+var numeriConsentiti = 0;
 
+// PS.Ho messo i < 5 in modo da non ripetersi 86 volte, ma solo 5 volte :)
 for (var i = 0; i < 5; i++) {
   var numeroGiocatore = parseInt(
     prompt("Inserisci un numero compreso tra 1 e 100")
   );
-  if (
-    numeroGiocatore >= 1 &&
-    numeroGiocatore <= 100 &&
-    listaNumeriGiocatore.indexOf(numeroGiocatore) == -1
-  ) {
+
+  if (mine.includes(numeroGiocatore)) {
+    console.log("Sei scoppiato!");
+    break;
+  } else if (numeroGiocatore < 1 || numeroGiocatore > 100) {
+    console.log("Hai inserito un numero vietato");
+  } else if (listaNumeriGiocatore.indexOf(numeroGiocatore) == -1) {
     listaNumeriGiocatore.push(numeroGiocatore);
-    console.log("L'utente ha inserito: " + numeroGiocatore);
-  } else {
-    i--;
+    console.log("Hai inserito: " + numeroGiocatore);
+    console.log("Bravo! Non sei ancora scoppiato");
+    numeriConsentiti++;
   }
 }
 console.log(listaNumeriGiocatore);
+console.log("Hai fatto un punteggio di " + numeriConsentiti);
 
 //Funzioni
 function generaNumero(min, max) {
