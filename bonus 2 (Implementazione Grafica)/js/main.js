@@ -1,10 +1,8 @@
 // Variabili
 var mine = [];
+var listaNumeriGiocatore = [];
 var randomNumber = 0;
-var difficulty = 0;
-var max = 100;
 var punti = 0;
-var perso = false;
 
 document.getElementById("campo").addEventListener("click", async function (e) {
   console.log(e.target.dataset.cella);
@@ -17,9 +15,10 @@ document.getElementById("campo").addEventListener("click", async function (e) {
     await sleep(100);
     alert("Sei scoppiato!");
     alert("Hai totalizzato un punteggio di: " + punti);
-    history.go(0);
-  } else {
+    location.reload();
+  } else if (listaNumeriGiocatore.indexOf(e.target.dataset.cella) == -1) {
     element[0].classList.add("green");
+    listaNumeriGiocatore.push(e.target.dataset.cella);
     punti++;
   }
 });
